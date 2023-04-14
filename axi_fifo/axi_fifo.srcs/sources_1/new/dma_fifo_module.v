@@ -1,8 +1,13 @@
 `timescale 1 ns / 1 ps
 
 module dma_fifo_module #(
+    
+    parameter integer SLAVE_FIFO_SIZE = 10,
+    parameter MAX_COMMAND_SIZE = 5,
     parameter integer SLAVE_DATA_WIDTH = 32,
 
+    parameter MASTER_FIFO_SIZE = 10,
+    parameter MAX_ANSWER_SIZE = 5,
     parameter integer MASTER_DATA_WIDTH  = 32,
     parameter integer MASTER_START_COUNT = 32
 ) (
@@ -32,7 +37,9 @@ module dma_fifo_module #(
 );
 
   dma_fifo_slave_module #(
-      .C_S_AXIS_TDATA_WIDTH(SLAVE_DATA_WIDTH)
+      .C_S_AXIS_TDATA_WIDTH(SLAVE_DATA_WIDTH),
+      .FIFO_SIZE(SLAVE_FIFO_SIZE),
+      .MAX_COMMAND_SIZE(MAX_COMMAND_SIZE)
   ) slave_module (
       .S_AXIS_ACLK(s00_axis_aclk),
       .S_AXIS_ARESETN(s00_axis_aresetn),

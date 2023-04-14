@@ -8,7 +8,9 @@ module dma_fifo_slave_module #(
     // Do not modify the parameters beyond this line
 
     // AXI4Stream sink: Data Width
-    parameter integer C_S_AXIS_TDATA_WIDTH = 32
+    parameter integer C_S_AXIS_TDATA_WIDTH = 32,
+    parameter integer FIFO_SIZE = 10,
+    parameter integer MAX_COMMAND_SIZE = 5
 ) (
 
     // AXI4Stream sink: Clock
@@ -37,11 +39,6 @@ module dma_fifo_slave_module #(
 
   wire uart_ready_reg;
 
-  // Number of commands to store
-  localparam FIFO_SIZE = 10;
-
-  // Total number of input data.
-  localparam MAX_SIZE_COMMAND = 5;
 
   // Define the states of state machine
   // The control state machine oversees the writing of input streaming data to the FIFO,
@@ -127,7 +124,7 @@ module dma_fifo_slave_module #(
       if (fifo_wren) begin
         // write pointer is incremented after every write to the FIFO
         // when FIFO write signal is enabled.
-        if (pointer_command_internal < MAX_SIZE_COMMAND - 1) begin
+        if (pointer_command_internal < MAX_COMMAND_SIZE - 1) begin
           pointer_command_internal <= pointer_command_internal + 1;
           command_ready <= 0;
           writes_done <= 1'b0;
@@ -163,7 +160,7 @@ module dma_fifo_slave_module #(
   // FIFO write enable generation
   assign fifo_wren = S_AXIS_TVALID && axis_tready;
 
- reg [(C_S_AXIS_TDATA_WIDTH/4)-1:0] stream_data_fifo[FIFO_SIZE -1: 0][MAX_SIZE_COMMAND-1: 0][3:0];
+ reg [(C_S_AXIS_TDATA_WIDTH/4)-1:0] stream_data_fifo[FIFO_SIZE -1: 0][MAX_COMMAND_SIZE-1: 0][3:0];
  integer initial_ctr = 0;
   
   // FIFO Implementation
