@@ -1,0 +1,22 @@
+verilog xil_defaultlib --include "/opt/Xilinx/Vivado/2022.1/data/xilinx_vip/include" --include "../../../../axi_dma_test.gen/sources_1/bd/axi_dma_block/ipshared/ec67/hdl" --include "../../../../axi_dma_test.gen/sources_1/bd/axi_dma_block/ipshared/5765/hdl" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_processing_system7_0_0/sim/axi_dma_block_processing_system7_0_0.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_xbar_0/sim/axi_dma_block_xbar_0.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_xlconcat_0_0/sim/axi_dma_block_xlconcat_0_0.v" \
+"../../../bd/axi_dma_block/ipshared/af63/src/custom_clock_divider.v" \
+"../../../bd/axi_dma_block/ipshared/af63/src/uart_module.v" \
+"../../../bd/axi_dma_block/ipshared/af63/src/uart_top_module.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_custom_uart_module_0_0/sim/axi_dma_block_custom_uart_module_0_0.v" \
+"../../../bd/axi_dma_block/ipshared/0cd8/dma_fifo_master_module.v" \
+"../../../bd/axi_dma_block/ipshared/0cd8/dma_fifo_slave_module.v" \
+"../../../bd/axi_dma_block/ipshared/0cd8/uart_debug_module.v" \
+"../../../bd/axi_dma_block/ipshared/0cd8/dma_fifo_module.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_dma_fifo_module_1_0/sim/axi_dma_block_dma_fifo_module_1_0.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_auto_pc_0/sim/axi_dma_block_auto_pc_0.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_auto_us_0/sim/axi_dma_block_auto_us_0.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_auto_us_1/sim/axi_dma_block_auto_us_1.v" \
+"../../../bd/axi_dma_block/ip/axi_dma_block_auto_pc_1/sim/axi_dma_block_auto_pc_1.v" \
+"../../../bd/axi_dma_block/sim/axi_dma_block.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
