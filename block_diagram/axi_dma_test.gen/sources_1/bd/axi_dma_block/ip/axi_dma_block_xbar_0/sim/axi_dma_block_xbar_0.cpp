@@ -631,7 +631,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
 
@@ -836,7 +836,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     M00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     M00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_M00_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,2,1,1,1,1,1>("M00_AXI_transactor", M00_AXI_transactor_param_props);
 
@@ -974,7 +974,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S01_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
 
@@ -1179,7 +1179,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S02_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
 
@@ -1923,7 +1923,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
 
@@ -2128,7 +2128,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     M00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     M00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_M00_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,2,1,1,1,1,1>("M00_AXI_transactor", M00_AXI_transactor_param_props);
 
@@ -2266,7 +2266,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S01_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
 
@@ -2471,7 +2471,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S02_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
 
@@ -3215,7 +3215,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
 
@@ -3420,7 +3420,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     M00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     M00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_M00_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,2,1,1,1,1,1>("M00_AXI_transactor", M00_AXI_transactor_param_props);
 
@@ -3558,7 +3558,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S01_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
 
@@ -3763,7 +3763,7 @@ void axi_dma_block_xbar_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S02_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
 
@@ -4148,7 +4148,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     S00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
   mp_s_axi_awid_converter_0 = new xsc::common::vector2vector_converter<6,2>("s_axi_awid_converter_0");
@@ -4482,7 +4482,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     M00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     M00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_M00_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,2,1,1,1,1,1>("M00_AXI_transactor", M00_AXI_transactor_param_props);
   mp_M00_AXI_transactor->AWID(m_axi_awid);
@@ -4601,7 +4601,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     S01_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S01_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
   mp_s_axi_awid_converter_1 = new xsc::common::vector2vector_converter<6,2>("s_axi_awid_converter_1");
@@ -4887,7 +4887,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     S02_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S02_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
   mp_s_axi_awid_converter_2 = new xsc::common::vector2vector_converter<6,2>("s_axi_awid_converter_2");
@@ -5438,7 +5438,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     S00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
   mp_s_axi_awid_converter_0 = new xsc::common::vector2vector_converter<6,2>("s_axi_awid_converter_0");
@@ -5772,7 +5772,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     M00_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M00_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     M00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    M00_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_M00_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,2,1,1,1,1,1>("M00_AXI_transactor", M00_AXI_transactor_param_props);
   mp_M00_AXI_transactor->AWID(m_axi_awid);
@@ -5891,7 +5891,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     S01_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S01_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
   mp_s_axi_awid_converter_1 = new xsc::common::vector2vector_converter<6,2>("s_axi_awid_converter_1");
@@ -6177,7 +6177,7 @@ axi_dma_block_xbar_0::axi_dma_block_xbar_0(const sc_core::sc_module_name& nm) : 
     S02_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S02_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_processing_system7_0_0_FCLK_CLK0");
+    S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "axi_dma_block_clk_in");
 
     mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,2,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
   mp_s_axi_awid_converter_2 = new xsc::common::vector2vector_converter<6,2>("s_axi_awid_converter_2");

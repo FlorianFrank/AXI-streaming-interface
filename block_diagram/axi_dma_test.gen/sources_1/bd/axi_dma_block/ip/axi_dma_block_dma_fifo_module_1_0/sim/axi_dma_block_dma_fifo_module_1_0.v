@@ -48,7 +48,7 @@
 
 
 // IP VLNV: seceng.fim.uni-passau.de:dma_fifo_module:dma_fifo_module:1.0
-// IP Revision: 8
+// IP Revision: 11
 
 `timescale 1ns/1ps
 
@@ -70,13 +70,14 @@ module axi_dma_block_dma_fifo_module_1_0 (
   m00_axis_tlast,
   m00_axis_tready,
   command_out,
-  output_value,
-  start_uart,
-  wait_for_uart_ready,
-  uart_active
+  answer_in,
+  debug_output,
+  ready,
+  active_in,
+  ready_in
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s00_axis_aclk, ASSOCIATED_BUSIF s00_axis, ASSOCIATED_RESET s00_axis_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN axi_dma_block_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s00_axis_aclk, ASSOCIATED_BUSIF s00_axis, ASSOCIATED_RESET s00_axis_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN axi_dma_block_clk_in, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s00_axis_aclk CLK" *)
 input wire s00_axis_aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s00_axis_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -90,10 +91,10 @@ input wire [31 : 0] s00_axis_tdata;
 input wire [3 : 0] s00_axis_tstrb;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s00_axis TLAST" *)
 input wire s00_axis_tlast;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s00_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN axi_dma_block_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s00_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN axi_dma_block_clk_in, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s00_axis TVALID" *)
 input wire s00_axis_tvalid;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m00_axis_aclk, ASSOCIATED_BUSIF m00_axis, ASSOCIATED_RESET m00_axis_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN axi_dma_block_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m00_axis_aclk, ASSOCIATED_BUSIF m00_axis, ASSOCIATED_RESET m00_axis_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN axi_dma_block_clk_in, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m00_axis_aclk CLK" *)
 input wire m00_axis_aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m00_axis_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -107,14 +108,15 @@ output wire [31 : 0] m00_axis_tdata;
 output wire [3 : 0] m00_axis_tstrb;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m00_axis TLAST" *)
 output wire m00_axis_tlast;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m00_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN axi_dma_block_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m00_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN axi_dma_block_clk_in, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m00_axis TREADY" *)
 input wire m00_axis_tready;
 output wire [135 : 0] command_out;
-output wire [7 : 0] output_value;
-output wire start_uart;
-input wire wait_for_uart_ready;
-input wire uart_active;
+input wire [135 : 0] answer_in;
+output wire [7 : 0] debug_output;
+output wire ready;
+input wire active_in;
+input wire ready_in;
 
   dma_fifo_module #(
     .SLAVE_DATA_WIDTH(32),
@@ -124,7 +126,8 @@ input wire uart_active;
     .SLAVE_FIFO_SIZE(10),
     .MAX_ANSWER_SIZE(5),
     .MASTER_FIFO_SIZE(10),
-    .CMD_VEC_SIZE(136)
+    .COMMAND_VEC_SIZE(136),
+    .ANSWER_VEC_SIZE(136)
   ) inst (
     .s00_axis_aclk(s00_axis_aclk),
     .s00_axis_aresetn(s00_axis_aresetn),
@@ -141,9 +144,10 @@ input wire uart_active;
     .m00_axis_tlast(m00_axis_tlast),
     .m00_axis_tready(m00_axis_tready),
     .command_out(command_out),
-    .output_value(output_value),
-    .start_uart(start_uart),
-    .wait_for_uart_ready(wait_for_uart_ready),
-    .uart_active(uart_active)
+    .answer_in(answer_in),
+    .debug_output(debug_output),
+    .ready(ready),
+    .active_in(active_in),
+    .ready_in(ready_in)
   );
 endmodule
