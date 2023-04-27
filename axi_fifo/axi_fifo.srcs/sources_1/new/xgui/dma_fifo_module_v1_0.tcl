@@ -13,8 +13,28 @@ Author: Florian Frank}
   ipgui::add_param $IPINST -name "MASTER_DATA_WIDTH" -parent ${Page_0}
   ipgui::add_param $IPINST -name "MASTER_START_COUNT" -parent ${Page_0}
   ipgui::add_param $IPINST -name "SLAVE_DATA_WIDTH" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "COMMAND_VEC_SIZE" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "ANSWER_VEC_SIZE" -parent ${Page_0}
 
 
+}
+
+proc update_PARAM_VALUE.ANSWER_VEC_SIZE { PARAM_VALUE.ANSWER_VEC_SIZE } {
+	# Procedure called to update ANSWER_VEC_SIZE when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.ANSWER_VEC_SIZE { PARAM_VALUE.ANSWER_VEC_SIZE } {
+	# Procedure called to validate ANSWER_VEC_SIZE
+	return true
+}
+
+proc update_PARAM_VALUE.COMMAND_VEC_SIZE { PARAM_VALUE.COMMAND_VEC_SIZE } {
+	# Procedure called to update COMMAND_VEC_SIZE when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.COMMAND_VEC_SIZE { PARAM_VALUE.COMMAND_VEC_SIZE } {
+	# Procedure called to validate COMMAND_VEC_SIZE
+	return true
 }
 
 proc update_PARAM_VALUE.MASTER_DATA_WIDTH { PARAM_VALUE.MASTER_DATA_WIDTH } {
@@ -114,5 +134,15 @@ proc update_MODELPARAM_VALUE.MAX_ANSWER_SIZE { MODELPARAM_VALUE.MAX_ANSWER_SIZE 
 proc update_MODELPARAM_VALUE.MASTER_FIFO_SIZE { MODELPARAM_VALUE.MASTER_FIFO_SIZE PARAM_VALUE.MASTER_FIFO_SIZE } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.MASTER_FIFO_SIZE}] ${MODELPARAM_VALUE.MASTER_FIFO_SIZE}
+}
+
+proc update_MODELPARAM_VALUE.COMMAND_VEC_SIZE { MODELPARAM_VALUE.COMMAND_VEC_SIZE PARAM_VALUE.COMMAND_VEC_SIZE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.COMMAND_VEC_SIZE}] ${MODELPARAM_VALUE.COMMAND_VEC_SIZE}
+}
+
+proc update_MODELPARAM_VALUE.ANSWER_VEC_SIZE { MODELPARAM_VALUE.ANSWER_VEC_SIZE PARAM_VALUE.ANSWER_VEC_SIZE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.ANSWER_VEC_SIZE}] ${MODELPARAM_VALUE.ANSWER_VEC_SIZE}
 }
 
