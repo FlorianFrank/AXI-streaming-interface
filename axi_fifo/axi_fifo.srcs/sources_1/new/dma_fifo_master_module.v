@@ -217,7 +217,7 @@
 	        end                                          
 	      else if (tx_en)// && M_AXIS_TSTRB[byte_index]  
 	        begin                                        
-	          stream_data_out <= read_pointer + 32'b1;   
+	          stream_data_out <= 32'hAABBCCDD; //read_pointer + 32'b1;   
 	        end                                          
 	    end                                              
 

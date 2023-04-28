@@ -3,10 +3,12 @@
 module dma_fifo_module #(
     
     parameter integer SLAVE_FIFO_SIZE = 10,
+    parameter COMMAND_VEC_SIZE = 136,
     parameter MAX_COMMAND_SIZE = 5,
     parameter integer SLAVE_DATA_WIDTH = 32,
 
     parameter MASTER_FIFO_SIZE = 10,
+    parameter ANSWER_VEC_SIZE = 136,
     parameter MAX_ANSWER_SIZE = 5,
     parameter integer MASTER_DATA_WIDTH  = 32,
     parameter integer MASTER_START_COUNT = 32
@@ -27,19 +29,23 @@ module dma_fifo_module #(
     output wire [(MASTER_DATA_WIDTH/8)-1 : 0] m00_axis_tstrb,
     output wire m00_axis_tlast,
     input wire m00_axis_tready,
+    
+    
+    output wire[COMMAND_VEC_SIZE-1:0] command_out,
+    input wire[ANSWER_VEC_SIZE-1:0] answer_in,
 
-    output wire [7:0] output_value,
-    output wire start_uart,
-    output wire [31:0] out_ptr,
-
-    input wire wait_for_uart_ready,
-    input wire uart_active
+    // TODO UART Test
+    output wire [7:0] debug_output,
+    output wire ready,
+    input wire active_in,
+    input wire ready_in  
 );
 
   dma_fifo_slave_module #(
       .C_S_AXIS_TDATA_WIDTH(SLAVE_DATA_WIDTH),
       .FIFO_SIZE(SLAVE_FIFO_SIZE),
-      .MAX_COMMAND_SIZE(MAX_COMMAND_SIZE)
+      .MAX_COMMAND_SIZE(MAX_COMMAND_SIZE),
+      .CMD_VEC_SIZE(COMMAND_VEC_SIZE)
   ) slave_module (
       .S_AXIS_ACLK(s00_axis_aclk),
       .S_AXIS_ARESETN(s00_axis_aresetn),
@@ -48,10 +54,10 @@ module dma_fifo_module #(
       .S_AXIS_TSTRB(s00_axis_tstrb),
       .S_AXIS_TLAST(s00_axis_tlast),
       .S_AXIS_TVALID(s00_axis_tvalid),
-      .output_value(output_value),
-      .uart_active(uart_active),
-      .uart_start(start_uart),
-      .out_write_ptr(out_ptr)
+      .output_value(debug_output),
+      .uart_active(active_in),
+      .uart_start(ready),
+      .command_out(command_out)
   );
 
 

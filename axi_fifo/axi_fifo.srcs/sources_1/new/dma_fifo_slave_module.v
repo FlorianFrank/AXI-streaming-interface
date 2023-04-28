@@ -2,14 +2,9 @@
 `timescale 1 ns / 1 ps
 
 module dma_fifo_slave_module #(
-    // Users to add parameters here
-
-    // User parameters ends
-    // Do not modify the parameters beyond this line
-
-    // AXI4Stream sink: Data Width
     parameter integer C_S_AXIS_TDATA_WIDTH = 32,
     parameter integer FIFO_SIZE = 10,
+    parameter integer CMD_VEC_SIZE = 136,
     parameter integer MAX_COMMAND_SIZE = 5
 ) (
 
@@ -28,12 +23,12 @@ module dma_fifo_slave_module #(
     // Data is in valid
     input wire S_AXIS_TVALID,
 
+    output wire[CMD_VEC_SIZE-1:0] command_out,
 
     // UART CONTROL
     output wire [7:0] output_value,
     output wire uart_start,
-    input wire uart_active,
-    output wire [31:0] out_write_ptr
+    input wire uart_active
 );
 
 
@@ -191,57 +186,28 @@ module dma_fifo_slave_module #(
     end
   endgenerate
 
-
-wire[159:0] serial_data;
-
-//always @(posedge S_AXIS_ACLK) begin
-   assign serial_data[0+:8] = stream_data_fifo  [pointer_commands][0][0];
-   assign serial_data[8+:8] =  stream_data_fifo [pointer_commands][0][1];
-   assign serial_data[16+:8] = stream_data_fifo [pointer_commands][0][2]; 
-   assign serial_data[24+:8] = stream_data_fifo [pointer_commands][0][3];
-   assign serial_data[32+:8] = stream_data_fifo [pointer_commands][1][0];
-   assign serial_data[40+:8] = stream_data_fifo [pointer_commands][1][1];
-   assign serial_data[48+:8] = stream_data_fifo [pointer_commands][1][2];
-   assign serial_data[56+:8] = stream_data_fifo [pointer_commands][1][3];
-   assign serial_data[64+:8] = stream_data_fifo [pointer_commands][2][0];
-   assign serial_data[72+:8] = stream_data_fifo [pointer_commands][2][1];
-   assign serial_data[80+:8] = stream_data_fifo [pointer_commands][2][2];
-   assign serial_data[88+:8] = stream_data_fifo [pointer_commands][2][3];
-   assign serial_data[96+:8] =  stream_data_fifo[pointer_commands][3][0];
-   assign serial_data[104+:8] = stream_data_fifo[pointer_commands][3][1];
-   assign serial_data[112+:8] = stream_data_fifo[pointer_commands][3][2];
-   assign serial_data[120+:8] = stream_data_fifo[pointer_commands][3][3];
-   assign serial_data[128+:8] = stream_data_fifo[pointer_commands][4][0];
-   assign serial_data[136+:8] = stream_data_fifo[pointer_commands][4][1];
-   assign serial_data[144+:8] = stream_data_fifo[pointer_commands][4][2];
-   assign serial_data[152+:8] = stream_data_fifo[pointer_commands][4][3];
-//end
+    // TODO solve this programmatically
+   assign command_out  [0+:8] = stream_data_fifo [pointer_commands][0][0];
+   assign command_out  [8+:8] = stream_data_fifo [pointer_commands][0][1];
+   assign command_out [16+:8] = stream_data_fifo [pointer_commands][0][2]; 
+   assign command_out [24+:8] = stream_data_fifo [pointer_commands][0][3];
+   assign command_out [32+:8] = stream_data_fifo [pointer_commands][1][0];
+   assign command_out [40+:8] = stream_data_fifo [pointer_commands][1][1];
+   assign command_out [48+:8] = stream_data_fifo [pointer_commands][1][2];
+   assign command_out [56+:8] = stream_data_fifo [pointer_commands][1][3];
+   assign command_out [64+:8] = stream_data_fifo [pointer_commands][2][0];
+   assign command_out [72+:8] = stream_data_fifo [pointer_commands][2][1];
+   assign command_out [80+:8] = stream_data_fifo [pointer_commands][2][2];
+   assign command_out [88+:8] = stream_data_fifo [pointer_commands][2][3];
+   assign command_out [96+:8] = stream_data_fifo [pointer_commands][3][0];
+   assign command_out[104+:8] = stream_data_fifo [pointer_commands][3][1];
+   assign command_out[112+:8] = stream_data_fifo [pointer_commands][3][2];
+   assign command_out[120+:8] = stream_data_fifo [pointer_commands][3][3];
+   assign command_out[128+:8] = stream_data_fifo [pointer_commands][4][0];
 
 
-/*assign serial_data[0+:8] = 8'h01; //stream_data_fifo[command_idx_to_send][0][0];
-assign serial_data[8+:8]   = 8'h02; //stream_data_fifo[command_idx_to_send][0][1];
-assign serial_data[16+:8]  = 8'h03; // stream_data_fifo[command_idx_to_send][0][2]; 
-assign serial_data[24+:8]  = 8'h04; //stream_data_fifo[command_idx_to_send][0][3];
-assign serial_data[32+:8]  = 8'h05; //stream_data_fifo[command_idx_to_send][1][0];
-assign serial_data[40+:8]  = 8'h06; //stream_data_fifo[command_idx_to_send][1][1];
-assign serial_data[48+:8]  = 8'h07; //stream_data_fifo[command_idx_to_send][1][2];
-assign serial_data[56+:8]  = 8'h08; //stream_data_fifo[command_idx_to_send][1][3];
-assign serial_data[64+:8]  = 8'h09; //stream_data_fifo[command_idx_to_send][2][0];
-assign serial_data[72+:8]  = 8'h0A; //stream_data_fifo[command_idx_to_send][2][1];
-assign serial_data[80+:8]  = 8'h0B;
-assign serial_data[88+:8]  = 8'h0C;
-assign serial_data[96+:8]  = 8'h0D;
-assign serial_data[104+:8] = 8'h0E;
-assign serial_data[112+:8] = 8'h0F;
-assign serial_data[120+:8] = 8'h10;
-assign serial_data[128+:8] = 8'h11;
-assign serial_data[136+:8] = 8'h12;
-assign serial_data[144+:8] = 8'h13;
-assign serial_data[152+:8] = 8'h14;*/
-
-
-
-UART_debug_module uart_debug(.clk(S_AXIS_ACLK), .command_avail(1'b1), .command_to_send(serial_data), .ready(uart_ready_reg), .output_value(output_value), .uart_start(uart_start), .uart_active(uart_active));
+// TODO only for debugging purposes
+UART_debug_module uart_debug(.clk(S_AXIS_ACLK), .command_avail(1'b1), .command_to_send(command_out), .ready(uart_ready_reg), .output_value(output_value), .uart_start(uart_start), .uart_active(uart_active));
   
 
 endmodule

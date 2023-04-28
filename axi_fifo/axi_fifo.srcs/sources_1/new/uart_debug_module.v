@@ -3,7 +3,7 @@
 module UART_debug_module (
     input wire clk,
     input wire command_avail,
-    input wire[159:0] command_to_send,
+    input wire[135:0] command_to_send,
     output wire ready,
     output reg [7:0] output_value,
     output reg uart_start,
@@ -25,7 +25,7 @@ module UART_debug_module (
   reg [3:0] sub_cmd_ctr = 4'h0;
   reg [3:0] eight_bit_ctr = 4'h0;
 
-  reg [159:0] command_to_send_reg;
+  reg [137:0] command_to_send_reg;
 
     integer ctr = 0;
     

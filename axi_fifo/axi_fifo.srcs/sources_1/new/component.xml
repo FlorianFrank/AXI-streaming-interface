@@ -212,7 +212,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1c9f368e</spirit:value>
+            <spirit:value>c6dab3e6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -228,7 +228,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1c9f368e</spirit:value>
+            <spirit:value>c6dab3e6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -242,7 +242,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>618e265d</spirit:value>
+            <spirit:value>22adecf6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -459,7 +459,41 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>output_value</spirit:name>
+        <spirit:name>command_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.COMMAND_VEC_SIZE&apos;)) - 1)">135</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>answer_in</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.ANSWER_VEC_SIZE&apos;)) - 1)">135</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>debug_output</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -476,7 +510,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>start_uart</spirit:name>
+        <spirit:name>ready</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -489,24 +523,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>out_ptr</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:vector>
-            <spirit:left spirit:format="long">31</spirit:left>
-            <spirit:right spirit:format="long">0</spirit:right>
-          </spirit:vector>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>wait_for_uart_ready</spirit:name>
+        <spirit:name>active_in</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -519,7 +536,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>uart_active</spirit:name>
+        <spirit:name>ready_in</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -568,6 +585,16 @@
         <spirit:displayName>Master Fifo Size</spirit:displayName>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.MASTER_FIFO_SIZE">10</spirit:value>
       </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>COMMAND_VEC_SIZE</spirit:name>
+        <spirit:displayName>Command Vec Size</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.COMMAND_VEC_SIZE">136</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>ANSWER_VEC_SIZE</spirit:name>
+        <spirit:displayName>Answer Vec Size</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.ANSWER_VEC_SIZE">136</spirit:value>
+      </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
   <spirit:choices>
@@ -595,7 +622,7 @@
       <spirit:file>
         <spirit:name>dma_fifo_module.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_4da7fa6e</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_5cd1b5b7</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -622,7 +649,7 @@
       <spirit:file>
         <spirit:name>xgui/dma_fifo_module_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_618e265d</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_22adecf6</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -668,6 +695,16 @@
       <spirit:displayName>Master Fifo Size</spirit:displayName>
       <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.MASTER_FIFO_SIZE">10</spirit:value>
     </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>COMMAND_VEC_SIZE</spirit:name>
+      <spirit:displayName>Command Vec Size</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.COMMAND_VEC_SIZE">136</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>ANSWER_VEC_SIZE</spirit:name>
+      <spirit:displayName>Answer Vec Size</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.ANSWER_VEC_SIZE">136</spirit:value>
+    </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
@@ -704,16 +741,16 @@
       <xilinx:displayName>dma_fifo_module_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>University of Passau - Chair of Computer Engineering</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>7</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2023-04-14T13:09:57Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>19</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2023-04-28T11:41:36Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2022.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="78b4f2ab"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1d59ef00"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="0682f668"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="16c355f5"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="832a508a"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="95a65d8a"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="c9a4038e"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="bad36af2"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="958c05bc"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
