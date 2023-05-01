@@ -4,10 +4,11 @@ module UART_debug_module (
     input wire clk,
     input wire command_avail,
     input wire[135:0] command_to_send,
-    output wire ready,
+    output reg ready,
     output reg [7:0] output_value,
     output reg uart_start,
-    input wire uart_active
+    input wire uart_active,
+    output reg active_out
 );
 
 
@@ -51,6 +52,8 @@ module UART_debug_module (
       // Wait for command_avail command from outside
       WAIT_FOR_COMMAND: begin
         ctr <= 0;
+        ready <= 0;
+        active_out <= 0;
         command_to_send_reg <= command_to_send;
         eight_bit_ctr <= 0;
         sub_cmd_ctr <= 0;
@@ -60,6 +63,7 @@ module UART_debug_module (
 
       TRANSMISSION_IDLE: begin
         breakPTR <= 0;
+        active_out <= 1;
         uart_start <= 0;
         output_value <= command_to_send[ctr*8+:8];
         if (sub_cmd_ctr >= 4'h5) state_ctr <= WAIT_FOR_COMMAND;
@@ -80,10 +84,11 @@ module UART_debug_module (
       
       WAIT_FOR_UART_FINISH: begin
         if (uart_active == 0) begin
-          if(breakPTR > 1000) begin
+          //if(breakPTR > 1000) begin
               state_ctr <= TRANSMISSION_IDLE;
               ctr <= ctr + 1;
-              end else breakPTR <= breakPTR  + 1;  
+              ready <= 1;
+            //  end else breakPTR <= breakPTR  + 1;  
         end
       end
     endcase
