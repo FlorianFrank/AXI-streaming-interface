@@ -2441,7 +2441,7 @@ Note: This value must be greater than or equal to the largest expected packet to
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>dfd23a6e</spirit:value>
+            <spirit:value>b3cd5b2c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2475,7 +2475,7 @@ Note: This value must be greater than or equal to the largest expected packet to
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>a018db19</spirit:value>
+            <spirit:value>30d4e95e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2508,7 +2508,7 @@ Note: This value must be greater than or equal to the largest expected packet to
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1fc1d21e</spirit:value>
+            <spirit:value>69c24b0b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3831,7 +3831,7 @@ Note: This value must be greater than or equal to the largest expected packet to
       <spirit:file>
         <spirit:name>../../axi_dma_test.gen/sources_1/bd/axi_dma_block/synth/axi_dma_block.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_53a2262c</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_dc1cdb82</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -4111,8 +4111,8 @@ Note: This value must be greater than or equal to the largest expected packet to
       </xilinx:taxonomies>
       <xilinx:displayName>ps_pl_interconnection_v1_0</xilinx:displayName>
       <xilinx:definitionSource>IPI</xilinx:definitionSource>
-      <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2023-04-14T16:43:47Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>24</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2023-05-02T08:56:33Z</xilinx:coreCreationDateTime>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AXI_MASTER_OUT.ADDR_WIDTH" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AXI_MASTER_OUT.ARUSER_WIDTH" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
@@ -4179,7 +4179,7 @@ Note: This value must be greater than or equal to the largest expected packet to
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="1cbb158d"/>
       <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="638fbea6"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="6462ac06"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="f5b3805c"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="33aa0b3f"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="9462359a"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="4f4ec766"/>
     </xilinx:packagingInfo>
