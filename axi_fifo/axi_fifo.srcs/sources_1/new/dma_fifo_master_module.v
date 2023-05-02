@@ -65,7 +65,7 @@
 	// State variable                                                                    
 	reg [1:0] mst_exec_state;                                                            
 	// Example design FIFO read pointer                                                  
-	reg [bit_num-1:0] read_pointer;                                                      
+	reg [bit_num-1:0] read_pointer = 0;                                                      
 
 	// AXI Stream internal signals
 	//wait counter. The master waits for the user defined number of clock cycles before initiating a transfer.
@@ -87,7 +87,7 @@
 
 	// I/O Connections assignments
 
-	assign M_AXIS_TVALID	= axis_tvalid_delay;
+	assign M_AXIS_TVALID = axis_tvalid_delay;
 	assign M_AXIS_TDATA	= stream_data_out;
 	assign M_AXIS_TLAST	= axis_tlast_delay;
 	assign M_AXIS_TSTRB	= {(C_M_AXIS_TDATA_WIDTH/8){1'b1}};
@@ -137,7 +137,7 @@
 	        // has finished storing the S_AXIS_TDATA                          
 	        if (tx_done)                                                      
 	          begin                                                           
-	            mst_exec_state <= IDLE;                                       
+	            mst_exec_state <= INIT_COUNTER;                                       
 	          end                                                             
 	        else                                                              
 	          begin                                                           
@@ -150,7 +150,7 @@
 	//tvalid generation
 	//axis_tvalid is asserted when the control state machine's state is SEND_STREAM and
 	//number of output streaming data is less than the NUMBER_OF_OUTPUT_WORDS.
-	assign axis_tvalid = ((mst_exec_state == SEND_STREAM) && (read_pointer < NUMBER_OF_OUTPUT_WORDS));
+	assign axis_tvalid = (mst_exec_state != IDLE);
 	                                                                                               
 	// AXI tlast generation                                                                        
 	// axis_tlast is asserted number of output streaming data is NUMBER_OF_OUTPUT_WORDS-1          
@@ -176,7 +176,6 @@
 
 
 	//read_pointer pointer
-
 	always@(posedge M_AXIS_ACLK)                                               
 	begin                                                                            
 	  if(!M_AXIS_ARESETN)                                                            
@@ -199,13 +198,16 @@
 	      begin                                                                      
 	        // tx_done is asserted when NUMBER_OF_OUTPUT_WORDS numbers of streaming data
 	        // has been out.                                                         
-	        tx_done <= 1'b1;                                                         
+	        tx_done <= 1'b1;       
+            read_pointer <= 0; // added this line so that an M_AXIS_ARESETN event isn't needed to start another transfer of NUMBER_OF_OUTPUT_WORDS                                                   
+                                                  
 	      end                                                                        
 	end                                                                              
 
+    
+    reg[31:0] ctr = 32'h0;
 
 	//FIFO read enable generation 
-
 	assign tx_en = M_AXIS_TREADY && axis_tvalid;   
 	                                                     
 	    // Streaming output data is read from FIFO       
@@ -213,11 +215,12 @@
 	    begin                                            
 	      if(!M_AXIS_ARESETN)                            
 	        begin                                        
-	          stream_data_out <= 1;                      
+	          stream_data_out = 1;                      
 	        end                                          
 	      else if (tx_en)// && M_AXIS_TSTRB[byte_index]  
-	        begin                                        
-	          stream_data_out <= read_pointer + 32'b1;   
+	        begin
+	          ctr = ctr + 1;                                        
+	          stream_data_out = ctr; //read_pointer + 32'b1;   
 	        end                                          
 	    end                                              
 
