@@ -28,8 +28,7 @@ module dma_fifo_module #(
     output wire [MASTER_DATA_WIDTH-1 : 0] m00_axis_tdata,
     output wire [(MASTER_DATA_WIDTH/8)-1 : 0] m00_axis_tstrb,
     output wire m00_axis_tlast,
-    input wire m00_axis_tready,
-    
+    input wire m00_axis_tready,    
     
     output wire[COMMAND_VEC_SIZE-1:0] command_out,
     input wire[ANSWER_VEC_SIZE-1:0] answer_in,
@@ -62,9 +61,15 @@ module dma_fifo_module #(
 
 
   dma_fifo_master_module #(
-      .C_M_AXIS_TDATA_WIDTH(MASTER_DATA_WIDTH),
-      .C_M_START_COUNT(MASTER_START_COUNT)
+      .MASTER_DATA_WIDTH	(MASTER_DATA_WIDTH),
+       // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
+      .MASTER_START_COUNT(MASTER_START_COUNT),
+	  .MAX_ANSWER_SIZE(MAX_ANSWER_SIZE),
+	  .MASTER_FIFO_SIZE(MASTER_FIFO_SIZE),
+	  .ANSWER_VEC_SIZE(ANSWER_VEC_SIZE)	
   ) master_module (
+      .answer_in(answer_in),
+      .ready_in(ready_in),
       .M_AXIS_ACLK(m00_axis_aclk),
       .M_AXIS_ARESETN(m00_axis_aresetn),
       .M_AXIS_TVALID(m00_axis_tvalid),

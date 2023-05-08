@@ -212,7 +212,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1a656b30</spirit:value>
+            <spirit:value>a0a599e5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -228,7 +228,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1a656b30</spirit:value>
+            <spirit:value>a0a599e5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -622,7 +622,7 @@
       <spirit:file>
         <spirit:name>dma_fifo_module.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_5cd1b5b7</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_56aafa7d</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -741,13 +741,13 @@
       <xilinx:displayName>dma_fifo_module_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>University of Passau - Chair of Computer Engineering</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>52</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2023-05-02T12:29:35Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>63</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2023-05-08T13:55:42Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2022.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="78b4f2ab"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="46a755e2"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="76d7bbfd"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="c9a4038e"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="bad36af2"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="958c05bc"/>
